@@ -36,6 +36,12 @@
       if (v.indexOf('<') > -1) el.innerHTML = v; else el.textContent = v;
     });
 
+    // La pagina legale tiene i tre testi in pagina come prosa, non come
+    // stringhe JS: un legale deve poterli leggere e correggere direttamente.
+    doc.querySelectorAll('[data-lang-block]').forEach(function (el) {
+      el.hidden = el.getAttribute('data-lang-block') !== lang;
+    });
+
     root.lang = t._htmlLang || lang;
     if (t._title) doc.title = t._title;
     var desc = doc.querySelector('meta[name="description"]');
@@ -51,6 +57,7 @@
     markToday(t);
     openStatus(t);
     renderMenu(lang);
+    draftBar(t);
   }
 
   doc.querySelectorAll('.lang button').forEach(function (b) {
@@ -103,13 +110,17 @@
   var menu = doc.getElementById('nav-m');
   var burger = doc.querySelector('.burger');
 
-  var onScroll = function () {
-    nav.classList.toggle('is-stuck', window.scrollY > window.innerHeight * 0.6);
-  };
-  window.addEventListener('scroll', onScroll, { passive: true });
-  onScroll();
+  // Le pagine interne (privacy) hanno un header già opaco e senza id: qui non
+  // c'è nulla da agganciare allo scroll.
+  if (nav) {
+    var onScroll = function () {
+      nav.classList.toggle('is-stuck', window.scrollY > window.innerHeight * 0.6);
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  }
 
-  if (burger && menu) {
+  if (burger && menu && nav) {
     var setMenu = function (open) {
       burger.setAttribute('aria-expanded', open ? 'true' : 'false');
       menu.hidden = !open;
@@ -346,6 +357,23 @@
                '</details>';
       }).join('');
     });
+  }
+
+  /* ── avviso di bozza ──────────────────────────────────────
+     Compare finché nella pagina restano segnaposto .todo e sparisce da solo
+     quando vengono sostituiti: così un'informativa incompleta non può
+     passare inosservata. */
+  function draftBar(t) {
+    var bar = doc.querySelector('[data-draftbar]');
+    if (!bar) return;
+    // Solo i segnaposto della lingua mostrata: contando anche le altre due
+    // il numero triplicherebbe e non direbbe più niente di utile.
+    var left = 0;
+    doc.querySelectorAll('.todo').forEach(function (el) {
+      if (!el.closest('[data-lang-block][hidden]')) left++;
+    });
+    bar.hidden = left === 0;
+    if (left) bar.textContent = (t.draftWarn || '').replace('{n}', left);
   }
 
   /* ── mappa a richiesta ────────────────────────────────── */

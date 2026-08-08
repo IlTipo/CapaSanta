@@ -185,6 +185,42 @@ I link social sono nel footer di `index.html`. Al momento c'è Instagram
 Google e il telefono: **conviene verificare che l'account Instagram sia quello
 giusto**, ed è lì che se ne aggiungono altri (Facebook, TripAdvisor…).
 
+## Privacy e cookie
+
+`privacy.html` contiene l'informativa e la sezione cookie, nelle tre lingue.
+I testi stanno **direttamente nella pagina** come prosa (un blocco
+`data-lang-block` per lingua), non dentro `i18n.js`: un consulente deve poterli
+leggere e correggere senza toccare codice.
+
+### ⚠ Prima di pubblicare
+
+La pagina è una **bozza**: i dati del titolare mancano e sono segnati con
+`<span class="todo">…</span>`, che li evidenzia in giallo. Finché ne resta
+anche uno, in cima alla pagina compare una barra d'avviso — sparisce da sola
+quando sono stati tutti sostituiti.
+
+Serve reperire: **ragione sociale**, **sede legale**, **partita IVA**,
+**numero REA**, un **indirizzo email** di contatto, il **fornitore di hosting**
+definitivo e la sua **durata di conservazione dei log**.
+
+Gli stessi dati vanno anche nel footer di `index.html` e `privacy.html`:
+li richiede l'art. 7 del D.lgs. 70/2003 a chiunque offra un servizio online, ed
+è un obbligo distinto dalla privacy.
+
+**Il testo va fatto validare da un consulente prima della pubblicazione.**
+
+### Perché non c'è il banner cookie
+
+Il sito non imposta alcun cookie. L'unico dato salvato sul dispositivo è la
+preferenza di lingua (`capasanta.lang` in localStorage), che è uno strumento
+tecnico esente da consenso. I font sono ospitati localmente e la mappa si
+carica solo su click, quindi al caricamento nessun dato raggiunge terze parti.
+
+Il banner diventa obbligatorio nel momento in cui si aggiunge Google Analytics,
+un pixel pubblicitario, un widget di prenotazione esterno o un video YouTube
+incorporato. In quel caso vanno anche aggiornate le sezioni 4 e 5
+dell'informativa.
+
 ## Note
 
 - Le recensioni sono **estratti** da Google e restano in italiano anche nelle

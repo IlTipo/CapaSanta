@@ -629,6 +629,55 @@ a { color: inherit; }
 .foot__meta a { text-decoration-color: rgba(246, 240, 228, .4); text-underline-offset: 3px; }
 .foot__small { margin: var(--sp-2) 0 0; font-size: .74rem; color: rgba(246, 240, 228, .5); }
 
+/* ── pagina legale ──────────────────────────────────────── */
+.legal { padding: calc(var(--nav-h) + var(--sp-5)) 0 var(--sp-6); background: var(--cream); }
+.legal .h-lg { margin-bottom: var(--sp-2); }
+.legal__upd {
+  font: 400 .74rem/1 var(--sans);
+  letter-spacing: .16em; text-transform: uppercase;
+  color: var(--fg-soft); margin: 0 0 var(--sp-4);
+}
+.legal h2 {
+  font: 400 1.5rem/1.25 var(--display);
+  margin: var(--sp-5) 0 var(--sp-2);
+  padding-top: var(--sp-2); border-top: 1px solid var(--rule);
+}
+.legal h3 { font: 400 1.15rem/1.3 var(--display); margin: var(--sp-3) 0 .5rem; }
+.legal p, .legal li { font-size: .96rem; line-height: 1.7; color: var(--fg-soft); }
+.legal p { margin: 0 0 var(--sp-2); max-width: 62ch; }
+.legal ul { margin: 0 0 var(--sp-2); padding-left: 1.2rem; max-width: 62ch; }
+.legal li { margin-bottom: .5rem; }
+.legal strong { color: var(--fg); font-weight: 500; }
+.legal a { color: var(--terra); text-underline-offset: 3px; }
+.legal code {
+  font-size: .88em; background: var(--cream-dim);
+  padding: .12em .4em; border-radius: 3px;
+}
+
+/* Segnaposto: volutamente vistosi, così è impossibile pubblicare la pagina
+   lasciandoli dentro per distrazione. */
+.todo {
+  background: #FFF0C2; color: #6B4A00;
+  border-bottom: 2px solid #E0A800;
+  padding: .05em .35em; border-radius: 2px;
+  font-style: italic; white-space: nowrap;
+}
+.todo::before { content: "⚠ "; }
+
+.draftbar {
+  position: sticky; top: var(--nav-h); z-index: 90;
+  background: #FFF0C2; color: #6B4A00;
+  border-bottom: 1px solid #E0A800;
+  padding: .75rem 1.25rem; text-align: center;
+  font: 400 .84rem/1.4 var(--sans);
+}
+
+.foot__legal {
+  margin: .4rem 0 0; font-size: .78rem;
+  color: rgba(246, 240, 228, .62);
+}
+.foot__small a { text-decoration-color: rgba(246, 240, 228, .4); text-underline-offset: 3px; }
+
 /* ── scroll reveal ──────────────────────────────────────── */
 .reveal {
   opacity: 0;
@@ -663,4 +712,10 @@ a { color: inherit; }
     animation-duration: .01ms !important; animation-iteration-count: 1 !important;
     transition-duration: .01ms !important; scroll-behavior: auto !important;
   }
+}
+
+.map__privacy {
+  flex-basis: 100%;
+  font-size: .76rem; line-height: 1.45; color: var(--fg-soft);
+  margin-top: .2rem;
 }
