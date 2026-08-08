@@ -1,0 +1,193 @@
+/* Capasanta in Piazzetta — IT / EN / FR copy.
+   Guest reviews are deliberately NOT translated: they are real quotes from
+   Google and stay in the language they were written in. */
+window.CAPASANTA_I18N = {
+  it: {
+    _htmlLang: "it",
+    _title: "Capasanta in Piazzetta — Ristorante a Santa Margherita Ligure",
+    _desc: "Ristorante in Piazza Martiri della Libertà a Santa Margherita Ligure. Aperto tutti i giorni dal pranzo al dopo cena, tavoli all'aperto sulla piazzetta.",
+    skip: "Vai al contenuto",
+    brandSub: "in Piazzetta",
+    navDay: "La giornata", navDrink: "Aperitivo", navMenu: "Menu",
+    navPlaces: "La terrazza", navReviews: "Recensioni", navInfo: "Dove siamo",
+    book: "Prenota", callUs: "Chiama e prenota",
+
+    heroKicker: "Santa Margherita Ligure",
+    heroLine: "Aperto tutti i giorni<br>dal pranzo al dopo cena",
+    heroSecond: "Scopri la giornata",
+
+    introEyebrow: "Piazza Martiri della Libertà, 20",
+    introTitle: "Una tavola sulla piazzetta,<br>a due passi dal porto",
+    introLede: "Tavoli all'aperto sotto le facciate dipinte di Santa Margherita, sedie color terracotta e i bicchieri di vetro verde che sono diventati la nostra firma. Si entra per un caffè e si resta per cena.",
+    tagOutdoor: "Tavoli all'aperto", tagVeg: "Piatti vegetariani",
+    tagKids: "Seggioloni per bambini", tagNonstop: "Cucina no-stop",
+
+    dayEyebrow: "Dalle 11 alle 23, ogni giorno",
+    dayTitle: "La giornata in piazzetta",
+    dayLede: "Il sole gira sulla piazza e il locale cambia con lui. Non chiudiamo mai tra un servizio e l'altro: a qualsiasi ora, c'è un tavolo per voi.",
+    d1t: "Si apre",   d1p: "Caffè, focaccia e i primi tavoli al sole.",
+    d2t: "Pranzo",    d2p: "Tovaglia bianca, un calice fresco, la piazza che passa.",
+    d3t: "Aperitivo", d3p: "L'ora buona: cocktail e qualcosa da spartire.",
+    d4t: "Cena",      d4p: "Pizza, vino rosso e le luci della piazzetta.",
+    d5t: "Dopo cena", d5p: "L'ultimo bicchiere, senza fretta.",
+    reelCap: "Pranzo, aperitivo e cena: la stessa piazza, tre ore diverse.",
+
+    drinkEyebrow: "Signature drink",
+    drinkTitle: "L'ora dell'aperitivo",
+    drinkLede: "Dalle cinque in poi la piazzetta si riempie. Ghiaccio, agrumi, bollicine e un bicchiere che vale la sosta — da bere seduti fuori, guardando passare Santa Margherita.",
+    drinkCta: "Tieni un tavolo fuori",
+
+    menuEyebrow: "La cucina",
+    menuTitle: "Il menu",
+    menuLede: "Cucina aperta dal pranzo al dopo cena, con pizza, piatti di mare e proposte vegetariane. Il menu completo arriva online a breve: per il piatto del giorno, chiamateci.",
+    menuSoon: "Menu in aggiornamento",
+    menuCall: "Chiedi al telefono", menuMaps: "Vedi le foto su Google",
+
+    placesEyebrow: "Fuori e dentro",
+    placesTitle: "La terrazza e la sala",
+    g1: "Tavoli all'aperto sulla piazzetta", g2: "La pizza, servita fuori",
+    g3: "Un rosso al tramonto", g4: "Il pranzo, sulla piazza",
+
+    revEyebrow: "Recensioni Google",
+    revTitle: "Cosa dicono in piazzetta",
+    revCount: "899 recensioni su Google",
+    rev1m: "3 mesi fa · 5/5", rev2m: "3 mesi fa · 5/5", rev3m: "1 mese fa · 5/5",
+    revNote: "Estratti dalle recensioni pubblicate su Google, riportati in lingua originale.",
+
+    infoEyebrow: "Dove siamo",
+    infoTitle: "Vi aspettiamo<br>in piazzetta",
+    directions: "Indicazioni",
+    hoursTitle: "Orari",
+    dMon: "Lunedì", dTue: "Martedì", dWed: "Mercoledì", dThu: "Giovedì",
+    dFri: "Venerdì", dSat: "Sabato", dSun: "Domenica",
+    openNow: "Aperto adesso · fino alle 23:00",
+    openSoon: "Apre alle 11:00",
+    shut: "Chiuso adesso · apre domani alle 11:00"
+  },
+
+  en: {
+    _htmlLang: "en",
+    _title: "Capasanta in Piazzetta — Restaurant in Santa Margherita Ligure",
+    _desc: "Restaurant on Piazza Martiri della Libertà in Santa Margherita Ligure. Open every day from lunch through to after dinner, with tables out on the square.",
+    skip: "Skip to content",
+    brandSub: "in Piazzetta",
+    navDay: "The day", navDrink: "Aperitivo", navMenu: "Menu",
+    navPlaces: "The terrace", navReviews: "Reviews", navInfo: "Find us",
+    book: "Book", callUs: "Call to book",
+
+    heroKicker: "Santa Margherita Ligure",
+    heroLine: "Open every day<br>from lunch to after dinner",
+    heroSecond: "See how the day unfolds",
+
+    introEyebrow: "Piazza Martiri della Libertà, 20",
+    introTitle: "A table on the square,<br>a minute from the harbour",
+    introLede: "Tables outside beneath the painted façades of Santa Margherita, terracotta chairs, and the green fluted glasses that have become our signature. People come in for a coffee and stay for dinner.",
+    tagOutdoor: "Outdoor seating", tagVeg: "Vegetarian dishes",
+    tagKids: "High chairs", tagNonstop: "Kitchen open all day",
+
+    dayEyebrow: "11am to 11pm, every day",
+    dayTitle: "A day on the piazzetta",
+    dayLede: "The sun moves across the square and the place moves with it. We never close between services — whatever the hour, there is a table for you.",
+    d1t: "We open",     d1p: "Coffee, focaccia, and the first tables in the sun.",
+    d2t: "Lunch",       d2p: "White linen, a cold glass, the square going by.",
+    d3t: "Aperitivo",   d3p: "The good hour: cocktails and something to share.",
+    d4t: "Dinner",      d4p: "Pizza, red wine, and the lights of the square.",
+    d5t: "After dinner",d5p: "One last glass, no rush.",
+    reelCap: "Lunch, aperitivo and dinner: the same square, three different hours.",
+
+    drinkEyebrow: "Signature drink",
+    drinkTitle: "The aperitivo hour",
+    drinkLede: "From five o'clock the piazzetta fills up. Ice, citrus, bubbles and a glass worth stopping for — best drunk outside, watching Santa Margherita go past.",
+    drinkCta: "Hold a table outside",
+
+    menuEyebrow: "The kitchen",
+    menuTitle: "The menu",
+    menuLede: "The kitchen runs from lunch through to after dinner, with pizza, seafood and vegetarian dishes. The full menu is coming online shortly — for today's specials, give us a call.",
+    menuSoon: "Menu being updated",
+    menuCall: "Ask us by phone", menuMaps: "See photos on Google",
+
+    placesEyebrow: "Outside and in",
+    placesTitle: "The terrace and the dining room",
+    g1: "Tables out on the square", g2: "Pizza, served outside",
+    g3: "A red at sunset", g4: "Lunch on the square",
+
+    revEyebrow: "Google reviews",
+    revTitle: "What people say",
+    revCount: "899 reviews on Google",
+    rev1m: "3 months ago · 5/5", rev2m: "3 months ago · 5/5", rev3m: "1 month ago · 5/5",
+    revNote: "Extracts from reviews published on Google, shown in their original language.",
+
+    infoEyebrow: "Find us",
+    infoTitle: "We'll see you<br>on the piazzetta",
+    directions: "Directions",
+    hoursTitle: "Opening hours",
+    dMon: "Monday", dTue: "Tuesday", dWed: "Wednesday", dThu: "Thursday",
+    dFri: "Friday", dSat: "Saturday", dSun: "Sunday",
+    openNow: "Open now · until 11:00 pm",
+    openSoon: "Opens at 11:00 am",
+    shut: "Closed now · opens tomorrow at 11:00 am"
+  },
+
+  fr: {
+    _htmlLang: "fr",
+    _title: "Capasanta in Piazzetta — Restaurant à Santa Margherita Ligure",
+    _desc: "Restaurant sur la Piazza Martiri della Libertà à Santa Margherita Ligure. Ouvert tous les jours du déjeuner jusqu'après le dîner, terrasse sur la place.",
+    skip: "Aller au contenu",
+    brandSub: "in Piazzetta",
+    navDay: "La journée", navDrink: "Apéritif", navMenu: "Carte",
+    navPlaces: "La terrasse", navReviews: "Avis", navInfo: "Nous trouver",
+    book: "Réserver", callUs: "Appeler pour réserver",
+
+    heroKicker: "Santa Margherita Ligure",
+    heroLine: "Ouvert tous les jours<br>du déjeuner à l'après-dîner",
+    heroSecond: "Découvrir la journée",
+
+    introEyebrow: "Piazza Martiri della Libertà, 20",
+    introTitle: "Une table sur la place,<br>à deux pas du port",
+    introLede: "Des tables en terrasse sous les façades peintes de Santa Margherita, des chaises terracotta et ces verres striés vert d'eau devenus notre signature. On entre pour un café, on reste pour dîner.",
+    tagOutdoor: "Terrasse", tagVeg: "Plats végétariens",
+    tagKids: "Chaises hautes", tagNonstop: "Cuisine en continu",
+
+    dayEyebrow: "De 11h à 23h, tous les jours",
+    dayTitle: "Une journée sur la piazzetta",
+    dayLede: "Le soleil tourne autour de la place et le restaurant change avec lui. Nous ne fermons jamais entre deux services : à toute heure, une table vous attend.",
+    d1t: "Ouverture",    d1p: "Café, focaccia et les premières tables au soleil.",
+    d2t: "Déjeuner",     d2p: "Nappe blanche, un verre frais, la place qui défile.",
+    d3t: "Apéritif",     d3p: "La belle heure : cocktails et quelque chose à partager.",
+    d4t: "Dîner",        d4p: "Pizza, vin rouge et les lumières de la place.",
+    d5t: "Après-dîner",  d5p: "Un dernier verre, sans se presser.",
+    reelCap: "Déjeuner, apéritif et dîner : la même place, trois heures différentes.",
+
+    drinkEyebrow: "Signature drink",
+    drinkTitle: "L'heure de l'apéritif",
+    drinkLede: "À partir de cinq heures, la piazzetta se remplit. De la glace, des agrumes, des bulles et un verre qui vaut la halte — à boire dehors, en regardant passer Santa Margherita.",
+    drinkCta: "Réserver une table dehors",
+
+    menuEyebrow: "La cuisine",
+    menuTitle: "La carte",
+    menuLede: "La cuisine est ouverte du déjeuner jusqu'après le dîner : pizza, produits de la mer et propositions végétariennes. La carte complète arrive bientôt en ligne — pour le plat du jour, appelez-nous.",
+    menuSoon: "Carte en cours de mise à jour",
+    menuCall: "Demander par téléphone", menuMaps: "Voir les photos sur Google",
+
+    placesEyebrow: "Dehors et dedans",
+    placesTitle: "La terrasse et la salle",
+    g1: "Tables en terrasse sur la place", g2: "La pizza, servie dehors",
+    g3: "Un rouge au coucher du soleil", g4: "Le déjeuner, sur la place",
+
+    revEyebrow: "Avis Google",
+    revTitle: "Ce que l'on en dit",
+    revCount: "899 avis sur Google",
+    rev1m: "il y a 3 mois · 5/5", rev2m: "il y a 3 mois · 5/5", rev3m: "il y a 1 mois · 5/5",
+    revNote: "Extraits d'avis publiés sur Google, reproduits dans leur langue d'origine.",
+
+    infoEyebrow: "Nous trouver",
+    infoTitle: "Nous vous attendons<br>sur la piazzetta",
+    directions: "Itinéraire",
+    hoursTitle: "Horaires",
+    dMon: "Lundi", dTue: "Mardi", dWed: "Mercredi", dThu: "Jeudi",
+    dFri: "Vendredi", dSat: "Samedi", dSun: "Dimanche",
+    openNow: "Ouvert · jusqu'à 23h00",
+    openSoon: "Ouvre à 11h00",
+    shut: "Fermé · ouvre demain à 11h00"
+  }
+};
