@@ -50,6 +50,7 @@
     try { localStorage.setItem(STORE, lang); } catch (e) { /* ignore */ }
     markToday(t);
     openStatus(t);
+    renderMenu(lang);
   }
 
   doc.querySelectorAll('.lang button').forEach(function (b) {
@@ -57,21 +58,40 @@
   });
 
   /* ── open / closed, 11:00–23:00 every day ─────────────── */
-  var DAY_KEYS = ['dSun', 'dMon', 'dTue', 'dWed', 'dThu', 'dFri', 'dSat'];
   var OPEN_H = 11, SHUT_H = 23;
+
+  /* Gli orari sono quelli del ristorante, non quelli di chi guarda: senza
+     fissare il fuso, un turista che consulta il sito da Londra o da New York
+     vedrebbe "chiuso" a pranzo e la carta sbagliata in evidenza. */
+  var DAYS = { Sun: 0, Mon: 1, Tue: 2, Wed: 3, Thu: 4, Fri: 5, Sat: 6 };
+  function romeNow() {
+    try {
+      var parts = new Intl.DateTimeFormat('en-GB', {
+        timeZone: 'Europe/Rome', hour: 'numeric', hour12: false, weekday: 'short'
+      }).formatToParts(new Date());
+      var o = {};
+      parts.forEach(function (p) { o[p.type] = p.value; });
+      var h = parseInt(o.hour, 10) % 24;
+      if (isNaN(h) || DAYS[o.weekday] == null) throw 0;
+      return { h: h, d: DAYS[o.weekday] };
+    } catch (e) {
+      var n = new Date();               // browser senza dati sui fusi
+      return { h: n.getHours(), d: n.getDay() };
+    }
+  }
 
   function markToday() {
     var rows = doc.querySelectorAll('.hrs tbody tr');
     if (!rows.length) return;
-    // The table is rendered Monday-first; JS getDay() is Sunday-first.
-    var idx = (new Date().getDay() + 6) % 7;
+    // La tabella parte dal lunedì, getDay() dalla domenica.
+    var idx = (romeNow().d + 6) % 7;
     rows.forEach(function (r, i) { r.classList.toggle('is-today', i === idx); });
   }
 
   function openStatus(t) {
     var el = doc.querySelector('[data-open-status]');
     if (!el || !t) return;
-    var h = new Date().getHours();
+    var h = romeNow().h;
     var open = h >= OPEN_H && h < SHUT_H;
     var msg = open ? t.openNow : (h < OPEN_H ? t.openSoon : t.shut);
     el.classList.toggle('is-shut', !open);
@@ -249,6 +269,96 @@
       });
     }, { rootMargin: '150px 0px', threshold: 0.05 });
     vids.forEach(function (v) { vio.observe(v); });
+  }
+
+  /* ── il menu ──────────────────────────────────────────────
+     Reso da assets/js/menu.js, così i piatti stanno in un file solo e
+     restano modificabili senza toccare il markup. Le due carte a orario —
+     i freddi fino alle 18, gli special dopo — sono marcate con `when` e la
+     carta in servizio adesso viene evidenziata.                          */
+  var SWITCH_HOUR = 18;
+  var MENU = window.CAPASANTA_MENU;
+
+  function txt(v, lang) {
+    if (v == null) return '';
+    return typeof v === 'string' ? v : (v[lang] || v.it || '');
+  }
+
+  function esc(s) {
+    return String(s).replace(/[&<>"]/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c];
+    });
+  }
+
+  function priceCells(it, wine) {
+    if (!wine) return '<span class="mi__p">' + (it.p ? '€ ' + it.p : '') + '</span>';
+    return '<span class="mi__g">' + (it.g ? '€ ' + it.g : '') + '</span>' +
+           '<span class="mi__b">' + (it.b ? '€ ' + it.b : '') + '</span>';
+  }
+
+  function renderItem(it, lang, wine) {
+    var h = '<div class="mi"><span class="mi__n">' + esc(it.n) + '</span>';
+    if (it.v) {
+      h += '<span class="mi__p"></span>';
+      it.v.forEach(function (v) {
+        h += '<div class="mi__v"><span class="mi__d">' + esc(txt(v.d, lang)) + '</span>' +
+             '<span class="mi__p">€ ' + v.p + '</span></div>';
+      });
+    } else {
+      h += priceCells(it, wine);
+      var d = txt(it.d, lang);
+      if (d) h += '<span class="mi__d">' + esc(d) + '</span>';
+    }
+    return h + '</div>';
+  }
+
+  function renderMenu(lang) {
+    if (!MENU) return;
+    var t = DICT[lang] || DICT.it;
+    var live = romeNow().h < SWITCH_HOUR ? 'pre18' : 'post18';
+    // Cambiare lingua non deve richiudere le portate che si stanno leggendo.
+    var wasOpen = {};
+    doc.querySelectorAll('.mg[open]').forEach(function (d) { wasOpen[d.id] = true; });
+
+    ['cucina', 'cantina'].forEach(function (fam) {
+      var host = doc.getElementById(fam === 'cucina' ? 'menuCucina' : 'menuCantina');
+      if (!host) return;
+      host.innerHTML = MENU[fam].map(function (g) {
+        var badge = '';
+        if (g.when) {
+          var on = g.when === live;
+          badge = '<span class="mg__when' + (on ? ' is-live' : '') + '">' +
+                  esc(t[on ? 'servedNow' : g.when]) + '</span>';
+        }
+        var body = '';
+        if (g.wine) {
+          body += '<div class="mgw__head"><span></span><span>' + esc(t.byGlass) +
+                  '</span><span>' + esc(t.byBottle) + '</span></div>';
+        }
+        body += g.items.map(function (i) { return renderItem(i, lang, g.wine); }).join('');
+        if (g.note) body += '<p class="mg__note">' + esc(txt(g.note, lang)) + '</p>';
+
+        return '<details class="mg' + (g.wine ? ' mg--wine' : '') + '" id="mg-' + g.id + '"' +
+                 (wasOpen['mg-' + g.id] ? ' open' : '') + '>' +
+                 '<summary><span class="mg__t">' + esc(txt(g.t, lang)) + '</span>' +
+                 badge + '<span class="mg__chev"></span></summary>' +
+                 '<div class="mg__body">' + body + '</div>' +
+               '</details>';
+      }).join('');
+    });
+  }
+
+  /* ── mappa a richiesta ────────────────────────────────── */
+  var mapBtn = doc.querySelector('[data-map]');
+  if (mapBtn) {
+    mapBtn.addEventListener('click', function () {
+      var f = doc.createElement('iframe');
+      f.src = mapBtn.getAttribute('data-src');
+      f.title = 'Piazza Martiri della Libertà 20, Santa Margherita Ligure';
+      f.loading = 'lazy';
+      f.referrerPolicy = 'no-referrer-when-downgrade';
+      mapBtn.replaceWith(f);
+    });
   }
 
   /* ── footer year + boot ───────────────────────────────── */

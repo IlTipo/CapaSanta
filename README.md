@@ -10,11 +10,16 @@ doppio click su `index.html` e funziona anche senza connessione.
 
 ## Come metterlo online
 
-Caricare **tutta la cartella** su un qualsiasi hosting (Netlify, Vercel, Aruba,
-IONOS, Register.it…). Non serve né Node né un database.
+**Con GitHub Pages (già pronto).** Nel repository:
+*Settings → Pages → Source: **GitHub Actions***. Da quel momento ogni modifica
+su `main` pubblica il sito da sola, tramite `.github/workflows/pages.yml`.
 
-Trascinando la cartella su [app.netlify.com/drop](https://app.netlify.com/drop)
-il sito è online in pochi secondi.
+**Con un altro hosting.** Caricare **tutta la cartella** su Netlify, Vercel,
+Aruba, IONOS, Register.it… Non serve né Node né un database. Trascinandola su
+[app.netlify.com/drop](https://app.netlify.com/drop) è online in pochi secondi.
+
+Per usare un dominio vostro (es. `capasantainpiazzetta.it`) va poi aggiornato
+il `<link rel="canonical">` in cima a `index.html`.
 
 ## Come vederlo in locale
 
@@ -55,12 +60,44 @@ tag HTML va messo `data-i18n="nomeVoce"`.
 La lingua viene scelta automaticamente dal browser del visitatore e ricordata
 per le visite successive.
 
-## Aggiungere il menu
+## Modificare il menu
 
-La sezione `#menu` è al momento un segnaposto ("Menu in aggiornamento"), in
-attesa dei piatti e dei prezzi reali. Quando li avete, si sostituisce il blocco
-`.menu__card` in `index.html` con le portate e si aggiornano le voci
-`menu*` in `assets/js/i18n.js`.
+Tutto il menu — 17 sezioni, 111 voci — sta in **`assets/js/menu.js`**. Non si
+tocca l'HTML: le tendine vengono costruite da lì.
+
+Un piatto:
+
+```js
+{ p: '15', n: 'La caprese', d: {
+    it: 'Mozzarella di bufala, pomodoro datterino e basilico',
+    en: 'Buffalo mozzarella with datterino tomato and basil',
+    fr: 'Mozzarella de bufflonne, tomate datterino et basilic' } }
+```
+
+`p` è il prezzo, `n` il nome (resta in italiano, come sul menu stampato), `d`
+la descrizione nelle tre lingue. Per cambiare un prezzo basta modificare `p`.
+
+Un piatto con più versioni usa `v` (vedi *Gli gnocchetti*, *Le catalane*).
+
+Un vino ha due prezzi — `g` al calice, `b` alla bottiglia — e la descrizione è
+una stringa sola: nomi e vitigni non si traducono.
+
+```js
+{ g: '10', b: '35', n: 'Gewürztraminer Aime Girlan', d: 'Gewürztraminer 100% · Alto Adige' }
+```
+
+Se un vino si serve solo in bottiglia si omette `g`, e la colonna resta vuota.
+
+### Le due carte a orario
+
+`Gli immancabili freddi` si servono **fino alle 18**, `I nostri special`
+**dopo le 18**. Le due sezioni sono marcate con `when: 'pre18'` e
+`when: 'post18'`; quella in servizio in quel momento mostra il pallino verde
+"In servizio ora". L'orario di cambio è `SWITCH_HOUR` in `assets/js/main.js`.
+
+L'ora è sempre quella italiana (`Europe/Rome`), non quella del telefono di chi
+guarda: un cliente che consulta il sito da Londra o da New York vede comunque
+la carta giusta.
 
 ## Cambiare gli orari
 
@@ -127,6 +164,21 @@ Sono definiti come variabili in cima a `assets/css/style.css`: cambiandoli lì,
 cambia tutto il sito.
 
 ---
+
+## Mappa e social
+
+La mappa si carica **solo quando il visitatore la chiede**: prima di quel
+momento non parte nessuna richiesta verso OpenStreetMap, e se la rete dovesse
+fallire si vede comunque un riquadro col logo e l'indirizzo invece di un
+rettangolo vuoto. I pulsanti *Google Maps* e *Apple Maps* funzionano sempre.
+
+Il segnaposto è a `44.3337291, 9.2132254`; per spostarlo si modificano `marker`
+e `bbox` nell'attributo `data-src` del pulsante mappa in `index.html`.
+
+I link social sono nel footer di `index.html`. Al momento c'è Instagram
+([@capasanta.ristorante](https://www.instagram.com/capasanta.ristorante/)),
+Google e il telefono: **conviene verificare che l'account Instagram sia quello
+giusto**, ed è lì che se ne aggiungono altri (Facebook, TripAdvisor…).
 
 ## Note
 
