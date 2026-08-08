@@ -25,11 +25,11 @@ jobs:
       url: ${{ steps.deploy.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
+      # Pages va attivato una volta sola a mano, in Settings → Pages →
+      # Source: GitHub Actions. Non è automatizzabile da qui: il token di
+      # Actions non ha i permessi per creare il sito Pages. Finché non è
+      # attivo questo passaggio fallisce; dopo, basta ri-lanciare il workflow.
       - uses: actions/configure-pages@v5
-        # attiva Pages da solo al primo giro, così non serve toccare le
-        # impostazioni del repository a mano
-        with:
-          enablement: true
       - uses: actions/upload-pages-artifact@v3
         with:
           path: .

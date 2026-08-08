@@ -10,9 +10,14 @@ doppio click su `index.html` e funziona anche senza connessione.
 
 ## Come metterlo online
 
-**Con GitHub Pages (già pronto).** Nel repository:
-*Settings → Pages → Source: **GitHub Actions***. Da quel momento ogni modifica
-su `main` pubblica il sito da sola, tramite `.github/workflows/pages.yml`.
+**Con GitHub Pages.** Serve un solo passaggio a mano, una volta sola:
+*Settings → Pages → Source: **GitHub Actions***, poi *Actions → Deploy sito →
+Re-run jobs*. Da quel momento ogni modifica su `main` pubblica il sito da
+sola, tramite `.github/workflows/pages.yml`.
+
+Quel click non è automatizzabile: il token di GitHub Actions non ha i permessi
+per creare il sito Pages, quindi finché non lo si attiva il workflow fallisce
+con *«Get Pages site failed»*. È l'unico intervento manuale richiesto.
 
 **Con un altro hosting.** Caricare **tutta la cartella** su Netlify, Vercel,
 Aruba, IONOS, Register.it… Non serve né Node né un database. Trascinandola su
