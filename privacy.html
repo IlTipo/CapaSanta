@@ -8,8 +8,10 @@
 <meta name="theme-color" content="#823C23">
 <meta name="robots" content="index, follow">
 <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
-<link rel="preload" as="font" type="font/woff2" href="assets/fonts/bodoni-moda-400-latin.woff2" crossorigin>
-<link rel="preload" as="font" type="font/woff2" href="assets/fonts/jost-400-latin.woff2" crossorigin>
+<!-- Niente <link rel="preload"> per i font: richiede l'attributo crossorigin,
+     che su file:// fa fallire la richiesta e sporca la console quando il sito
+     si apre con un doppio click. I font sono sulla stessa origine e il
+     foglio di stile è già qui in testa, quindi si perde solo un round-trip. -->
 <link rel="stylesheet" href="assets/fonts/fonts.css">
 <link rel="stylesheet" href="assets/css/style.css">
 </head>
